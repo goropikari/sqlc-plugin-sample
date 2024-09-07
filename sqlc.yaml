@@ -5,8 +5,12 @@ plugins:
     cmd: ./sample_plugin
 - name: sample_plugin_wasm
   wasm:
-      url: file:///src/sample_plugin.wasm # inside sqlc container path
-      sha256: 39927f037b03d406a50e1a2e000d14bd37757db334d67c0c5e6cae50d33381ba # sha256sum sample_plugin.wasm
+    url: file:///src/sample_plugin.wasm # inside sqlc container path
+    sha256: 39927f037b03d406a50e1a2e000d14bd37757db334d67c0c5e6cae50d33381ba # sha256sum sample_plugin.wasm
+- name: sample_plugin_wasm_github
+  wasm:
+    url: https://github.com/goropikari/sqlc-plugin-sample/releases/download/v0.1.0/sample_plugin.wasm
+    sha256: 20029edbfc02671325184868af1b8a7a707777a1873d698a7001722bf98a8a86
 sql:
 - engine: "mysql"
   queries: "query.sql"
@@ -28,3 +32,9 @@ sql:
         filename: "wasm_output"
         foo: 'plugin options 3'
         bar: 'plugin options 4'
+    - out: tutorial
+      plugin: sample_plugin_wasm_github
+      options:
+        filename: "wasm_github_output"
+        foo: 'plugin options 5'
+        bar: 'plugin options 6'
