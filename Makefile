@@ -1,5 +1,5 @@
 buf:
-	docker run --rm --volume "$(shell pwd):/workspace" --workdir /workspace bufbuild/buf generate
+	docker run --rm --volume "$(shell pwd):/workspace" --workdir /workspace bufbuild/buf:1.40.1 generate
 	sudo chown -R 1000:1000 proto
 
 build: buf
