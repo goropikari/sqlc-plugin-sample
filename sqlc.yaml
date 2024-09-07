@@ -1,0 +1,30 @@
+version: "2"
+plugins:
+- name: sample_plugin_process
+  process:
+    cmd: ./sample_plugin
+- name: sample_plugin_wasm
+  wasm:
+      url: file:///src/sample_plugin.wasm # inside sqlc container path
+      sha256: 39927f037b03d406a50e1a2e000d14bd37757db334d67c0c5e6cae50d33381ba # sha256sum sample_plugin.wasm
+sql:
+- engine: "mysql"
+  queries: "query.sql"
+  schema: "schema.sql"
+  gen:
+    go:
+      package: "tutorial"
+      out: "tutorial"
+  codegen:
+    - out: tutorial/process_output
+      plugin: sample_plugin_process
+      options:
+        filename: ""  # filename が空だと out に書かれたものが使われる
+        foo: 'plugin options 1'
+        bar: 'plugin options 2'
+    - out: tutorial
+      plugin: sample_plugin_wasm
+      options:
+        filename: "wasm_output"
+        foo: 'plugin options 3'
+        bar: 'plugin options 4'

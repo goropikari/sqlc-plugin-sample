@@ -1,0 +1,35 @@
+
+w
+2mysql
+schema.sql"	query.sqlbT
+gen
+dump_proto,{"bar":"piyo","filename":"foo","foo":"hoge"}*
+./sqlc-dump-protoùpublic"îpublic€
+	authors&
+id0ÿÿÿÿÿÿÿÿÿR	authorsbbigint&
+name0ÿÿÿÿÿÿÿÿÿR	authorsbtext#
+bio0ÿÿÿÿÿÿÿÿÿR	authorsbtexta
+	libraries(
+id0ÿÿÿÿÿÿÿÿÿR	librariesbbigint(
+name0ÿÿÿÿÿÿÿÿÿR	librariesbtextˆ
+6SELECT id, name, bio FROM authors
+WHERE id = ? LIMIT 1	GetAuthor:one"*
+id0ÿÿÿÿÿÿÿÿÿR	authorsbbigintzid",
+name0ÿÿÿÿÿÿÿÿÿR	authorsbtextzname"(
+bio0ÿÿÿÿÿÿÿÿÿR	authorsbtextzbio*.*
+id0ÿÿÿÿÿÿÿÿÿR	authorsbbigintzid:	query.sqlÔ
+/SELECT id, name, bio FROM authors
+ORDER BY nameListAuthors:many"*
+id0ÿÿÿÿÿÿÿÿÿR	authorsbbigintzid",
+name0ÿÿÿÿÿÿÿÿÿR	authorsbtextzname"(
+bio0ÿÿÿÿÿÿÿÿÿR	authorsbtextzbio:	query.sqlØ
+5INSERT INTO authors (
+  name, bio
+) VALUES (
+  ?, ?
+)CreateAuthor:execresult*84
+name0ÿÿÿÿÿÿÿÿÿRpublicauthorsbtextzname*40
+bio0ÿÿÿÿÿÿÿÿÿRpublicauthorsbtextzbio:	query.sqlB	authorsr
+ DELETE FROM authors
+WHERE id = ?DeleteAuthor:exec*.*
+id0ÿÿÿÿÿÿÿÿÿR	authorsbbigintzid:	query.sql"v1.27.0*,{"bar":"piyo","filename":"foo","foo":"hoge"}

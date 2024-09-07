@@ -1,0 +1,15 @@
+version: v2
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: proto
+managed:
+  enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: sqlc
+inputs:
+  - git_repo: 'https://github.com/sqlc-dev/sqlc'
+    branch: v1.27.0
+    subdir: protos
+    depth: 30
+

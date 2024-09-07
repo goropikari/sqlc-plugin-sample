@@ -1,0 +1,20 @@
+version: "2"
+plugins:
+- name: dump_proto
+  process:
+    cmd: ./sqlc-dump-proto
+sql:
+- engine: "mysql"
+  queries: "query.sql"
+  schema: "schema.sql"
+  codegen:
+  - out: gen
+    plugin: dump_proto
+    options:
+      filename: "foo"
+      foo: 'hoge'
+      bar: 'piyo'
+  gen:
+    go:
+      package: "tutorial"
+      out: "tutorial"
