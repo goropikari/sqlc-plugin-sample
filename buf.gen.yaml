@@ -9,7 +9,7 @@ managed:
       value: sqlc
 inputs:
   - git_repo: 'https://github.com/sqlc-dev/sqlc'
-    branch: v1.27.0
+    tag: v1.27.0
     subdir: protos
-    depth: 30
-
+    paths:
+      - plugin
